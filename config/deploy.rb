@@ -47,5 +47,6 @@ end
 
 # Fix permissions
 after "deploy:update_code", :roles => [:web, :db, :app] do
-  sudo "chown -R #{application}:sysadmin #{deploy_to}/*" 
+  sudo "chown -R #{application}:sysadmin #{deploy_to}/*"
+  sudo "chmod -R 770 #{deploy_to}/*" 
 end
