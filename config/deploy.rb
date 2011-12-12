@@ -41,12 +41,17 @@ namespace:deploy do
 end
 
 # Rails 3.1: compile assets after deployment
-after 'deploy:update_code' do
-  run "cd #{release_path}; RAILS_ENV=production rake assets:precompile"
-end
+#after 'deploy:update_code' do
+#  run "cd #{release_path}; RAILS_ENV=production rake assets:precompile"
+#end
 
 # Fix permissions
 after "deploy:update_code", :roles => [:web, :db, :app] do
   sudo "chown -R #{application}:sysadmin #{deploy_to}/*"
   sudo "chmod -R 770 #{deploy_to}/*" 
+end
+
+# Rehash rbenv
+after "bundle:install", :roles => [:web, :db, :app] do
+  run "rbenv rehash"
 end
