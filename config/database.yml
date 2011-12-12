@@ -20,7 +20,7 @@ test:
 
 production:
   adapter: mysql2
-  host: testing.yuweb.com
+  host: localhost
   database: rails2
   username: app_rails2
   password: testing
