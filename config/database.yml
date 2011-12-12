@@ -22,6 +22,6 @@ production:
   adapter: mysql2
   host: testing.yuweb.com
   database: rails2
-  username: app_rails
+  username: app_rails2
   password: testing
   
